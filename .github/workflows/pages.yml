@@ -1,4 +1,4 @@
-name: Deploy website
+name: Unzip and deploy website
 
 on:
   push:
@@ -22,9 +22,23 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Unzip website
+        run: |
+          mkdir -p _site
+          unzip -o zohirola-website.zip -d _site
+          # জিপের ভেতরে ফোল্ডার থাকলে ফাইলগুলো উপরে তুলে আনা
+          if [ ! -f _site/index.html ]; then
+            sub=$(find _site -maxdepth 2 -name index.html -printf '%h\n' | head -n 1)
+            cp -a "$sub"/. _site/
+          fi
+          # রিপোর রুটে APK থাকলে সাইটে যোগ করা
+          cp -f *.apk _site/ 2>/dev/null || true
+          ls -la _site
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
