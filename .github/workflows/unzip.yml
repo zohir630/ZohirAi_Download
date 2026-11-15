@@ -1,0 +1,43 @@
+name: Unzip files into repo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.zip"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Unzip into repo root
+        run: |
+          for z in *.zip; do
+            [ -f "$z" ] || continue
+            mkdir -p /tmp/out
+            unzip -o "$z" -d /tmp/out
+            # জিপের ভেতরে একটা ফোল্ডার থাকলে ফাইলগুলো উপরে তোলা
+            if [ ! -f /tmp/out/index.html ]; then
+              sub=$(find /tmp/out -maxdepth 2 -name index.html -printf '%h\n' | head -n 1)
+              [ -n "$sub" ] && cp -a "$sub"/. . || cp -a /tmp/out/. .
+            else
+              cp -a /tmp/out/. .
+            fi
+            git rm -q --cached "$z" || true
+            rm -f "$z"
+          done
+          ls -la
+
+      - name: Commit extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Extract zip files"
+          git push
