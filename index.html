@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zohirola – Download the Android app</title>
+<meta name="description" content="Zohirola puts Gemini, Claude, GPT and DeepSeek in one chat. Voice, 20+ AI tools, Bangla and English. Download the Android app.">
+<meta name="theme-color" content="#07070a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zohirola – All the top AIs. One app.">
+<meta property="og:description" content="Gemini, Claude, GPT and DeepSeek in one chat. Bangla and English. Download for Android.">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    color-scheme: light dark; box-sizing:border-box;
+    --bg:#ffffff; --bg2:#f5f5f7; --card:#ffffff; --text:#0b0b0f; --muted:#5d6170; --line:rgba(11,11,15,.09);
+    --red:#d9261c; --red2:#ff5a3c; --soft:rgba(217,38,28,.08);
+    --glass:rgba(255,255,255,.72); --shadow:0 30px 80px -30px rgba(20,10,30,.28);
+    --grid:rgba(11,11,15,.045); --glow1:rgba(255,90,60,.20); --glow2:rgba(120,100,255,.16);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#07070a; --bg2:#0d0d12; --card:#111117; --text:#f4f4f6; --muted:#9a9eab; --line:rgba(255,255,255,.09);
+      --soft:rgba(255,90,60,.14); --glass:rgba(14,14,19,.7); --shadow:0 30px 80px -30px rgba(0,0,0,.9);
+      --grid:rgba(255,255,255,.04); --glow1:rgba(255,70,50,.22); --glow2:rgba(110,90,255,.2);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#07070a; --bg2:#0d0d12; --card:#111117; --text:#f4f4f6; --muted:#9a9eab; --line:rgba(255,255,255,.09);
+    --soft:rgba(255,90,60,.14); --glass:rgba(14,14,19,.7); --shadow:0 30px 80px -30px rgba(0,0,0,.9);
+    --grid:rgba(255,255,255,.04); --glow1:rgba(255,70,50,.22); --glow2:rgba(110,90,255,.2);
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;
+    font-family:"Inter","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+  html[lang=bn] body{font-family:"Noto Sans Bengali","Inter",system-ui,sans-serif}
+  a{color:inherit}
+  h1,h2,h3,p{margin:0}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  section{padding:84px 0}
+  @media(max-width:700px){section{padding:60px 0}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);
+    border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    padding:7px 14px;border-radius:99px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--soft)}
+  h2{font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  html[lang=bn] h2{letter-spacing:-.01em;line-height:1.25}
+  html[lang=bn] h1{letter-spacing:-.01em;line-height:1.14}
+  .lead{color:var(--muted);font-size:clamp(16px,2vw,19px);max-width:600px;margin-top:16px}
+  .center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+  .grad{background:linear-gradient(120deg,var(--red),var(--red2) 60%,#ff9a62);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- hero backdrop ---------- */
+  .hero-bg{position:absolute;inset:0 0 auto 0;height:900px;z-index:-1;pointer-events:none;overflow:hidden}
+  .hero-bg::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 380px at 15% 10%,var(--glow1),transparent 70%),
+               radial-gradient(640px 420px at 88% 18%,var(--glow2),transparent 70%)}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 0%,#000 25%,transparent 75%)}
+
+  /* ---------- floating nav ---------- */
+  .nav{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:0;right:0;z-index:60;padding:0 14px;pointer-events:none}
+  .nav-in{pointer-events:auto;max-width:960px;margin:0 auto;height:56px;display:flex;align-items:center;gap:6px;padding:0 10px 0 16px;
+    border-radius:99px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(18px) saturate(1.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);
+    box-shadow:0 10px 40px -18px rgba(0,0,0,.35)}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;text-decoration:none;letter-spacing:-.02em}
+  .brand svg{width:26px;height:26px}
+  .links{display:none;margin-left:14px;gap:2px}
+  .links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:8px 13px;border-radius:99px;transition:.2s}
+  .links a:hover{color:var(--text);background:var(--soft)}
+  .sp{flex:1}
+  .ib{height:38px;min-width:38px;padding:0 11px;border-radius:99px;border:0;background:transparent;color:var(--text);
+    font:inherit;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+  .ib:hover{background:var(--soft)}
+  .ib svg{width:18px;height:18px}
+  @media(min-width:860px){.links{display:flex}}
+  @media(max-width:759px){.nav-in .btn{display:none}.nav-in{padding-right:8px}}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;
+    font:inherit;font-weight:600;font-size:16px;border-radius:99px;padding:16px 28px;transition:transform .15s,box-shadow .25s,background .2s}
+  .btn svg{width:19px;height:19px;flex:none}
+  .btn:active{transform:scale(.97)}
+  .btn-red{color:#fff;background:linear-gradient(135deg,var(--red),var(--red2));box-shadow:0 18px 40px -16px rgba(217,38,28,.85),inset 0 1px 0 rgba(255,255,255,.25)}
+  .btn-red:hover{box-shadow:0 22px 48px -14px rgba(217,38,28,.95),inset 0 1px 0 rgba(255,255,255,.3);transform:translateY(-1px)}
+  .btn-line{color:var(--text);background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .btn-line:hover{background:var(--soft)}
+  .btn-sm{padding:10px 18px;font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:132px 0 20px;text-align:center}
+  h1{font-size:clamp(42px,8.6vw,86px);font-weight:800;letter-spacing:-.045em;line-height:1.02;margin-top:22px}
+  .hero .lead{margin:22px auto 0;font-size:clamp(17px,2.2vw,21px)}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+  .meta{margin-top:18px;font-size:13.5px;color:var(--muted);min-height:22px}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin-top:12px;font-size:13.5px;color:var(--muted)}
+  .trust span{display:inline-flex;align-items:center;gap:7px}
+  .trust svg{width:15px;height:15px;color:var(--red)}
+  .notice{display:none;max-width:520px;margin:20px auto 0;padding:14px 16px;border-radius:18px;background:var(--soft);font-size:14px;text-align:center}
+  .notice.show{display:block}
+  .notice button{margin-top:10px}
+
+  /* ---------- product stage ---------- */
+  .stage{position:relative;display:flex;justify-content:center;margin-top:58px;padding-bottom:10px}
+  .stage::before{content:"";position:absolute;left:50%;top:40%;width:min(720px,92vw);height:420px;transform:translate(-50%,-50%);
+    background:radial-gradient(closest-side,var(--glow1),transparent);filter:blur(30px);z-index:-1}
+  .phone{width:min(318px,80vw);aspect-ratio:9/18.6;border-radius:46px;padding:10px;position:relative;
+    background:linear-gradient(155deg,#34313c,#0b0a0e 55%,#25222b);
+    box-shadow:var(--shadow),0 0 0 1px rgba(255,255,255,.08) inset,0 0 0 2px rgba(0,0,0,.6)}
+  .phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:82px;height:22px;border-radius:99px;background:#000;z-index:5}
+  .screen{height:100%;border-radius:37px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+  .scr-top{padding:46px 14px 11px;border-bottom:1px solid var(--line);background:var(--card)}
+  .scr-title{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14.5px;letter-spacing:-.02em}
+  .scr-title svg{width:19px;height:19px}
+  .svc{display:flex;gap:5px;margin-top:10px}
+  .svc span{flex:1;text-align:center;font-size:10.5px;font-weight:600;padding:5px 0;border-radius:99px;border:1px solid var(--line);color:var(--muted);transition:all .35s}
+  .svc span.on{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 6px 14px -6px var(--red)}
+  .msgs{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden;justify-content:flex-end}
+  .msg{max-width:86%;padding:9px 12px;border-radius:17px;font-size:12.5px;line-height:1.5;animation:pop .35s ease-out}
+  .msg.u{align-self:flex-end;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-bottom-right-radius:5px}
+  .msg.b{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px}
+  .msg.sw{align-self:center;font-size:10.5px;font-weight:600;color:var(--red);background:var(--soft);border-radius:99px;padding:5px 11px}
+  .dots{display:inline-flex;gap:4px;padding:4px 0}
+  .dots b{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:bl 1s infinite ease-in-out}
+  .dots b:nth-child(2){animation-delay:.15s}.dots b:nth-child(3){animation-delay:.3s}
+  @keyframes bl{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}}
+  .scr-in{margin:8px 10px 14px;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:9px 9px 9px 14px;font-size:12px;color:var(--muted);display:flex;align-items:center}
+  .scr-in i{margin-left:auto;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red2));display:block}
+
+  .float{position:absolute;display:none;align-items:center;gap:12px;padding:12px 16px;border-radius:20px;border:1px solid var(--line);
+    background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);font-size:13.5px;font-weight:600;
+    animation:bob 6s ease-in-out infinite}
+  .float small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+  .float .fi{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--red),var(--red2))}
+  .float .fi svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .f1{left:calc(50% - 420px);top:90px}
+  .f2{right:calc(50% - 440px);top:230px;animation-delay:-2s}
+  .f3{left:calc(50% - 390px);bottom:70px;animation-delay:-4s}
+  @keyframes bob{50%{transform:translateY(-12px)}}
+  @media(min-width:1000px){.float{display:flex}}
+
+  /* ---------- works-with strip ---------- */
+  .strip{padding:46px 0 10px}
+  .strip p{text-align:center;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .marks{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 38px;margin-top:20px}
+  .marks b{font-size:clamp(20px,3vw,26px);font-weight:800;letter-spacing:-.03em;color:var(--text);opacity:.55;transition:opacity .2s}
+  .marks b:hover{opacity:1}
+
+  /* ---------- bento ---------- */
+  .bento{display:grid;gap:14px;margin-top:48px;grid-template-columns:1fr}
+  @media(min-width:900px){
+    .bento{grid-template-columns:repeat(6,1fr)}
+    .b-ai{grid-column:span 4}.b-voice{grid-column:span 2}
+    .b-tools,.b-skills,.b-mem{grid-column:span 2}
+    .b-code{grid-column:span 3}.b-more{grid-column:span 3}
+  }
+  .bc{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;text-align:left;
+    transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column;min-height:300px}
+  .bc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(217,38,28,.25)}
+  .bc h3{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+  .bc p{margin-top:8px;color:var(--muted);font-size:15px;max-width:440px}
+  .vis{margin-top:auto;padding-top:22px}
+
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px}
+  .sw{display:flex;gap:8px;flex-wrap:wrap}
+  .sw span{font-size:14px;font-weight:600;padding:10px 18px;border-radius:99px;border:1px solid var(--line);color:var(--muted);transition:all .4s;background:var(--bg2)}
+  .sw span.on{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-color:transparent;box-shadow:0 12px 24px -12px var(--red);transform:scale(1.05)}
+  .same{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:13.5px;color:var(--muted)}
+  .same i{width:18px;height:18px;border-radius:50%;background:var(--soft);color:var(--red);display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800}
+
+  .orb-wrap{display:grid;place-items:center;height:130px}
+  .orb{width:74px;height:74px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#ffb199,var(--red2) 38%,var(--red) 100%);
+    box-shadow:0 0 40px -4px var(--red2);position:relative;animation:breathe 3.2s ease-in-out infinite}
+  .orb::before,.orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1.5px solid var(--red2);opacity:.45;animation:ring 3.2s ease-out infinite}
+  .orb::after{animation-delay:1.6s}
+  @keyframes breathe{50%{transform:scale(1.1)}}
+  @keyframes ring{0%{transform:scale(.8);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+
+  .mini{display:grid;gap:8px}
+  .mini div{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:10px 12px;border-radius:14px;background:var(--bg2);border:1px solid var(--line)}
+  .mini em{font-style:normal;flex:none;width:22px;height:22px;border-radius:50%;background:var(--soft);color:var(--red);font-size:11.5px;font-weight:800;display:grid;place-items:center}
+
+  .zip{display:flex;align-items:center;gap:12px}
+  .zip .file{flex:none;padding:12px 14px;border-radius:16px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-weight:700;font-size:13px;box-shadow:0 12px 24px -12px var(--red)}
+  .zip .arrow{color:var(--muted);font-size:20px}
+  .zip .out{display:grid;gap:6px;flex:1}
+  .zip .out span{font-size:12.5px;font-weight:600;padding:7px 11px;border-radius:12px;background:var(--bg2);border:1px solid var(--line)}
+
+  .tl{position:relative;display:grid;gap:12px;padding-left:20px}
+  .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--red),transparent);border-radius:2px}
+  .tl div{position:relative;font-size:13.5px;font-weight:600}
+  .tl div::before{content:"";position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--card);border:2px solid var(--red)}
+  .tl small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+
+  .codewin{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0c0c11;color:#e6e6ee;font:12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .codewin .bar{display:flex;gap:6px;padding:10px 12px;background:#15151c;border-bottom:1px solid rgba(255,255,255,.06);align-items:center}
+  .codewin .bar i{width:9px;height:9px;border-radius:50%;background:#3a3a46}
+  .codewin .bar span{margin-left:auto;font:600 11px "Inter",sans-serif;color:#9a9eab}
+  .codewin pre{margin:0;padding:12px 14px;white-space:pre;overflow:hidden}
+  .k{color:#ff7b72}.s{color:#a5d6ff}.t{color:#7ee787}.c{color:#6e7281}
+
+  .more-chips span{font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:99px;background:var(--bg2);border:1px solid var(--line)}
+
+  /* ---------- tools ---------- */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+  .tab{font:inherit;font-size:14px;font-weight:600;padding:10px 18px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;transition:.2s}
+  .tab:hover{color:var(--text)}
+  .tab.on{background:var(--text);border-color:var(--text);color:var(--bg)}
+  .tools{display:grid;gap:12px;margin-top:22px}
+  @media(min-width:760px){.tools{grid-template-columns:repeat(2,1fr)}}
+  .tool{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;animation:pop .35s ease-out}
+  .tool .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--red);font-weight:800;font-size:13px;display:grid;place-items:center}
+  .tool b{display:block;font-size:15.5px;font-weight:600}
+  .tool span{font-size:13.5px;color:var(--muted)}
+
+  /* ---------- install ---------- */
+  .band{background:var(--bg2);border-block:1px solid var(--line)}
+  .steps{display:grid;gap:14px;margin-top:46px;counter-reset:s}
+  @media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px;position:relative}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;font-size:44px;font-weight:800;letter-spacing:-.04em;margin-bottom:12px;
+    background:linear-gradient(135deg,var(--red),var(--red2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .step h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .step p{margin-top:8px;color:var(--muted);font-size:15px}
+  .tip{margin-top:16px;padding:18px 22px;border-radius:20px;background:var(--card);border:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+  .tip b{color:var(--text)}
+
+  /* ---------- faq ---------- */
+  .faq{max-width:780px;margin:44px auto 0;display:grid;gap:10px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:0 22px;transition:border-color .2s}
+  details[open]{border-color:rgba(217,38,28,.3)}
+  summary{cursor:pointer;list-style:none;font-weight:600;padding:19px 0;display:flex;justify-content:space-between;gap:14px;font-size:16.5px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--red);font-size:24px;line-height:1;transition:transform .25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin:0 0 19px;color:var(--muted);font-size:15px}
+
+  /* ---------- final cta ---------- */
+  .final{position:relative;overflow:hidden;border-radius:36px;padding:72px 24px;text-align:center;color:#fff;
+    background:radial-gradient(500px 300px at 20% 0%,rgba(255,150,100,.45),transparent 70%),radial-gradient(500px 300px at 90% 100%,rgba(120,90,255,.4),transparent 70%),#120a0b}
+  .final .fl{width:64px;height:64px;margin:0 auto 22px;display:block}
+  .final h2{color:#fff;max-width:640px;margin:0 auto}
+  .final p{margin:16px auto 30px;max-width:520px;color:rgba(255,255,255,.72);font-size:17px}
+  .btn-white{background:#fff;color:#111;box-shadow:0 18px 40px -16px rgba(255,255,255,.4)}
+  .btn-white:hover{transform:translateY(-1px)}
+
+  footer{padding:46px 0 60px;color:var(--muted);font-size:14px}
+  .foot{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;justify-content:space-between}
+  .foot .brand{color:var(--text)}
+  .foot nav{display:flex;gap:6px 20px;flex-wrap:wrap}
+  .foot nav a{text-decoration:none}.foot nav a:hover{color:var(--text)}
+  .foot .by{width:100%;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+  .foot b{color:var(--text)}
+
+  /* ---------- sticky mobile bar ---------- */
+  .bar-m{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:12px;
+    padding:10px 10px 10px 16px;border-radius:22px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(18px) saturate(1.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);
+    box-shadow:0 20px 50px -16px rgba(0,0,0,.45);transform:translateY(140%);transition:transform .4s cubic-bezier(.2,.8,.3,1)}
+  .bar-m.show{transform:none}
+  .bar-m svg.lg{width:30px;height:30px;flex:none}
+  .bar-m div{flex:1;min-width:0;font-weight:700;font-size:15px;line-height:1.25}
+  .bar-m small{display:block;font-weight:500;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media(min-width:760px){.bar-m{display:none}}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- floating nav -->
+<div class="nav"><div class="nav-in">
+  <a class="brand" href="#top" aria-label="Zohirola">
+    <svg viewBox="136 121 1650 1650" aria-hidden="true"><g fill="#d7231c"><path d="M1643,625H800C745,625 705,660 705,710V825C705,880 750,912 805,912H1723A765,765 0 0 1 1718,1070H1085C850,1070 702,1200 702,1420V1690A765,765 0 1 1 1643,625Z"/><path d="M1010,1519V1440C1010,1390 1050,1352 1100,1352H1620A765,765 0 0 1 1490,1518Z"/></g></svg>
+    <span class="appname">Zohirola</span>
+  </a>
+  <nav class="links">
+    <a href="#features" data-i="navFeatures"></a><a href="#tools" data-i="navTools"></a><a href="#install" data-i="navInstall"></a><a href="#faq" data-i="navFaq"></a>
+  </nav>
+  <span class="sp"></span>
+  <button class="ib" id="themeBtn" type="button" aria-label="Theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  <button class="ib" id="langBtn" type="button" aria-label="Language">EN</button>
+  <a class="btn btn-red btn-sm dl-link" href="#" data-i="dlShort"></a>
+</div></div>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span><span data-i="heroTag"></span></span>
+      <h1 data-i="heroTitle"></h1>
+      <p class="lead" data-i="heroSub"></p>
+      <div class="cta">
+        <a class="btn btn-red dl-link" href="#" id="mainDl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span data-i="dlMain"></span>
+        </a>
+        <a class="btn btn-line" href="#features" data-i="seeMore"></a>
+      </div>
+      <div class="meta" id="verLine"></div>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i="chip1"></span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i="chip2"></span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i="chip3"></span></span>
+      </div>
+      <div class="notice" id="desktopNote"><span data-i="desktopNote"></span><br><button class="btn btn-line btn-sm" id="copyLink" type="button" data-i="copyLink"></button></div>
+
+      <div class="stage" aria-hidden="true">
+        <div class="float f1"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></div><div><span data-i="fl1a"></span><small data-i="fl1b"></small></div></div>
+        <div class="float f2"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M7 7l3 3M17 7l-3 3M12 15v3"/></svg></div><div><span data-i="fl2a"></span><small data-i="fl2b"></small></div></div>
+        <div class="float f3"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><span data-i="fl3a"></span><small data-i="fl3b"></small></div></div>
+        <div class="phone"><div class="screen">
+          <div class="scr-top">
+            <div class="scr-title"><svg viewBox="136 121 1650 1650"><g fill="#d7231c"><path d="M1643,625H800C745,625 705,660 705,710V825C705,880 750,912 805,912H1723A765,765 0 0 1 1718,1070H1085C850,1070 702,1200 702,1420V1690A765,765 0 1 1 1643,625Z"/><path d="M1010,1519V1440C1010,1390 1050,1352 1100,1352H1620A765,765 0 0 1 1490,1518Z"/></g></svg>Zohirola</div>
+            <div class="svc" id="svc"><span class="on">Gemini</span><span>Claude</span><span>GPT</span><span>DeepSeek</span></div>
+          </div>
+          <div class="msgs" id="msgs"></div>
+          <div class="scr-in"><span data-i="demoInput"></span><i></i></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS WITH -->
+  <div class="wrap strip reveal">
+    <p data-i="worksWith"></p>
+    <div class="marks"><b>Gemini</b><b>Claude</b><b>GPT</b><b>DeepSeek</b></div>
+  </div>
+
+  <!-- FEATURES (bento) -->
+  <section id="features">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow"><span class="dot"></span><span data-i="featEyebrow"></span></span>
+        <h2 style="margin-top:18px" data-i="featTitle"></h2>
+        <p class="lead" data-i="featLead"></p>
+      </div>
+      <div class="bento">
+        <article class="bc b-ai reveal">
+          <h3 data-i="bAiT"></h3><p data-i="bAiP"></p>
+          <div class="vis"><div class="sw" id="swBig"><span class="on">Gemini</span><span>Claude</span><span>GPT</span><span>DeepSeek</span></div>
+            <div class="same"><i>✓</i><span data-i="bAiSame"></span></div></div>
+        </article>
+        <article class="bc b-voice reveal">
+          <h3 data-i="bVoT"></h3><p data-i="bVoP"></p>
+          <div class="vis"><div class="orb-wrap"><div class="orb"></div></div></div>
+        </article>
+        <article class="bc b-tools reveal">
+          <h3 data-i="bToT"></h3><p data-i="bToP"></p>
+          <div class="vis"><div class="mini" id="miniTools"></div></div>
+        </article>
+        <article class="bc b-skills reveal">
+          <h3 data-i="bSkT"></h3><p data-i="bSkP"></p>
+          <div class="vis"><div class="zip"><div class="file">skills.zip</div><div class="arrow">→</div>
+            <div class="out"><span>Skill 1</span><span>Skill 2</span><span>Skill 3</span></div></div></div>
+        </article>
+        <article class="bc b-mem reveal">
+          <h3 data-i="bMeT"></h3><p data-i="bMeP"></p>
+          <div class="vis"><div class="tl"><div data-i="bMe1"></div><div data-i="bMe2"></div><div data-i="bMe3"></div></div></div>
+        </article>
+        <article class="bc b-code reveal">
+          <h3 data-i="bCoT"></h3><p data-i="bCoP"></p>
+          <div class="vis"><div class="codewin"><div class="bar"><i></i><i></i><i></i><span>app.html</span></div>
+<pre><span class="c">&lt;!-- made by Zohirola --&gt;</span>
+<span class="k">&lt;button</span> <span class="t">class</span>=<span class="s">"go"</span><span class="k">&gt;</span>Start<span class="k">&lt;/button&gt;</span>
+<span class="k">&lt;script&gt;</span>
+  <span class="t">document</span>.querySelector(<span class="s">'.go'</span>)
+    .onclick = () =&gt; alert(<span class="s">'Hello!'</span>)
+<span class="k">&lt;/script&gt;</span></pre></div></div>
+        </article>
+        <article class="bc b-more reveal">
+          <h3 data-i="bMoT"></h3><p data-i="bMoP"></p>
+          <div class="vis"><div class="chiprow more-chips" id="moreChips"></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools" class="band">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow"><span class="dot"></span><span data-i="toolsEyebrow"></span></span>
+        <h2 style="margin-top:18px" data-i="toolsTitle"></h2>
+        <p class="lead" data-i="toolsLead"></p>
+      </div>
+      <div class="tabs" id="toolTabs"></div>
+      <div class="tools" id="toolList"></div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section id="install">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow"><span class="dot"></span><span data-i="instEyebrow"></span></span>
+        <h2 style="margin-top:18px" data-i="instTitle"></h2>
+        <p class="lead" data-i="instLead"></p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3 data-i="st1h"></h3><p data-i="st1p"></p></div>
+        <div class="step reveal"><h3 data-i="st2h"></h3><p data-i="st2p"></p></div>
+        <div class="step reveal"><h3 data-i="st3h"></h3><p data-i="st3p"></p></div>
+      </div>
+      <div class="tip" data-i="instTip"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="band">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow"><span class="dot"></span><span data-i="faqEyebrow"></span></span>
+        <h2 style="margin-top:18px" data-i="faqTitle"></h2>
+      </div>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap">
+      <div class="final reveal">
+        <svg class="fl" viewBox="136 121 1650 1650" aria-hidden="true"><g fill="#ff4b3a"><path d="M1643,625H800C745,625 705,660 705,710V825C705,880 750,912 805,912H1723A765,765 0 0 1 1718,1070H1085C850,1070 702,1200 702,1420V1690A765,765 0 1 1 1643,625Z"/><path d="M1010,1519V1440C1010,1390 1050,1352 1100,1352H1620A765,765 0 0 1 1490,1518Z"/></g></svg>
+        <h2 data-i="finalTitle"></h2>
+        <p data-i="finalSub"></p>
+        <a class="btn btn-white dl-link" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span data-i="dlMain"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><svg viewBox="136 121 1650 1650" aria-hidden="true"><g fill="#d7231c"><path d="M1643,625H800C745,625 705,660 705,710V825C705,880 750,912 805,912H1723A765,765 0 0 1 1718,1070H1085C850,1070 702,1200 702,1420V1690A765,765 0 1 1 1643,625Z"/><path d="M1010,1519V1440C1010,1390 1050,1352 1100,1352H1620A765,765 0 0 1 1490,1518Z"/></g></svg><span class="appname">Zohirola</span></a>
+    <nav><a href="#features" data-i="navFeatures"></a><a href="#tools" data-i="navTools"></a><a href="#install" data-i="navInstall"></a><a href="#faq" data-i="navFaq"></a></nav>
+    <div class="by"><span data-i="madeBy"></span><span>© <span id="yr"></span> <b class="appname">Zohirola</b></span></div>
+  </div>
+</footer>
+
+<!-- sticky mobile download bar -->
+<div class="bar-m" id="barM">
+  <svg class="lg" viewBox="136 121 1650 1650" aria-hidden="true"><g fill="#d7231c"><path d="M1643,625H800C745,625 705,660 705,710V825C705,880 750,912 805,912H1723A765,765 0 0 1 1718,1070H1085C850,1070 702,1200 702,1420V1690A765,765 0 1 1 1643,625Z"/><path d="M1010,1519V1440C1010,1390 1050,1352 1100,1352H1620A765,765 0 0 1 1490,1518Z"/></g></svg>
+  <div><span class="appname">Zohirola</span><small data-i="barSub"></small></div>
+  <a class="btn btn-red btn-sm dl-link" href="#" data-i="dlShort"></a>
+</div>
+
+<script>
+/* =====================================================================
+   ONE-TIME SETTINGS  (everything else on the page is automatic)
+   1) Easiest: put your APK next to index.html and name it Zohirola.apk
+   2) Or keep the APK in GitHub Releases and set githubRepo ("username/repo"):
+      the button then always points to your newest release by itself.
+   3) Or set firebaseDbUrl (your Realtime Database URL). The page reads
+      /app_update, the same node the in-app updater and admin app use.
+   ===================================================================== */
+var CONFIG = {
+  appName:       "Zohirola",
+  apkUrl:        "Zohirola.apk",
+  firebaseDbUrl: "",
+  githubRepo:    "",
+  minAndroid:    "5.0"
+};
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var I18N = {
+    en: {
+      navFeatures:"Features", navTools:"AI tools", navInstall:"Install", navFaq:"FAQ",
+      dlShort:"Download", dlMain:"Download for Android", seeMore:"See what's inside",
+      heroTag:"New: What If Machine, Thought Map & Adaptive App",
+      heroTitle:'All the top AIs.<br><span class="grad">One app.</span>',
+      heroSub:"Gemini, Claude, GPT and DeepSeek in the same chat. Switch any time, talk by voice, and use 20+ smart tools that think with you. In Bangla and English.",
+      chip1:"Free to start", chip2:"Android 5.0+", chip3:"Bangla supported",
+      desktopNote:"Zohirola is an Android app. Open this page on your phone to install it, or copy the link to send it there.",
+      copyLink:"Copy page link", copied:"Copied!",
+      demoInput:"Message Zohirola", barSub:"Free for Android",
+      fl1a:"Voice chat", fl1b:"Just tap and talk", fl2a:"Thought Map", fl2b:"Ideas as a mind map", fl3a:"Switched to Claude", fl3b:"Same chat, no restart",
+      worksWith:"Works with",
+      featEyebrow:"Features", featTitle:"Built for real, everyday work",
+      featLead:"A fast, clean chat app for study, business and everything in between.",
+      bAiT:"Four AIs. One conversation.", bAiP:"Switch between Gemini, Claude, GPT and DeepSeek in a tap. The chat stays with you, so the next AI picks up exactly where the last one stopped.",
+      bAiSame:"Same conversation after every switch",
+      bVoT:"Just talk.", bVoP:"Tap the orb, speak and listen. Tap outside it to close.",
+      bToT:"20+ AI tools", bToP:"A numbered hub of tools that think with you.",
+      bSkT:"Skills you teach", bSkP:"Add your own ways of working, or import a whole ZIP at once.",
+      bMeT:"Memory that lasts", bMeP:"A timeline, capsules and a bridge between chats.",
+      bMe1:"<small>Today</small>Key point saved", bMe2:"<small>Yesterday</small>Capsule created", bMe3:"<small>Last week</small>Bridged into a new chat",
+      bCoT:"Code and pages, live", bCoP:"Ask for code or a web page, preview it, then copy or download it.",
+      bMoT:"And everything else", bMoP:"The small things that make it feel complete.",
+      more:["Web search","Photos & files","Answer modes","Bangla & English","Light & dark","Profile & cover photo","Updates inside the app"],
+      toolsEyebrow:"AI tools", toolsTitle:"Tools that go beyond chat",
+      toolsLead:"Open AI Features in the app and pick a tool. They are numbered and grouped, so you always know where to start.",
+      instEyebrow:"Install", instTitle:"Ready in under a minute",
+      instLead:"Zohirola installs from an APK file, like many apps shared outside the Play Store.",
+      st1h:"Download the APK", st1p:"Tap Download on this page. If your browser asks to keep the file, choose Keep or Download anyway.",
+      st2h:"Allow the install", st2p:"Open the downloaded file. If Android asks, allow your browser to install apps from this source, then tap Install.",
+      st3h:"Open and sign in", st3p:"Open Zohirola, sign in with Google or email and start chatting. Future updates arrive inside the app.",
+      instTip:"<b>Play Protect warning?</b> If you see “unsafe app blocked”, tap <b>More details → Install anyway</b>. It only appears because the app is not from the Play Store.",
+      faqEyebrow:"FAQ", faqTitle:"Questions people ask",
+      finalTitle:"Start chatting with Zohirola today", finalSub:"One app, four top AIs, your language. It takes less than a minute to install.",
+      madeBy:"Made with care by <b>Zahirul Islam Zohir</b>",
+      verPrefix:"Version", needAndroid:"Android",
+      demo:[
+        {u:"Write a short caption for my shop's weekend offer"},
+        {b:"Sure! “Weekend special: 20% off everything. Come in, treat yourself.” ✨"},
+        {s:"Switched to Claude. Same chat continues."},
+        {u:"Make it shorter"},
+        {b:"“20% off all weekend. Treat yourself.” ✨"}
+      ]
+    },
+    bn: {
+      navFeatures:"ফিচার", navTools:"AI টুলস", navInstall:"ইনস্টল", navFaq:"প্রশ্নোত্তর",
+      dlShort:"ডাউনলোড", dlMain:"Android-এর জন্য ডাউনলোড", seeMore:"ভেতরে কী আছে দেখুন",
+      heroTag:"নতুন: হোয়াট-ইফ মেশিন, থট ম্যাপ ও অ্যাডাপ্টিভ অ্যাপ",
+      heroTitle:'সব সেরা AI।<br><span class="grad">এক অ্যাপে।</span>',
+      heroSub:"Gemini, Claude, GPT ও DeepSeek একই চ্যাটে। ইচ্ছেমতো বদলান, ভয়েসে কথা বলুন, আর আপনার সাথে ভাবে এমন ২০+ স্মার্ট টুল ব্যবহার করুন। বাংলা ও ইংরেজিতে।",
+      chip1:"ফ্রি-তে শুরু", chip2:"Android ৫.০+", chip3:"বাংলা সাপোর্ট",
+      desktopNote:"Zohirola একটি Android অ্যাপ। ইনস্টল করতে এই পেজটি ফোনে খুলুন, অথবা লিংক কপি করে ফোনে পাঠিয়ে দিন।",
+      copyLink:"পেজের লিংক কপি করুন", copied:"কপি হয়েছে!",
+      demoInput:"Zohirola-কে লিখুন", barSub:"Android-এর জন্য ফ্রি",
+      fl1a:"ভয়েস চ্যাট", fl1b:"ট্যাপ করুন, কথা বলুন", fl2a:"থট ম্যাপ", fl2b:"আইডিয়া মাইন্ড ম্যাপে", fl3a:"Claude-এ বদলেছে", fl3b:"একই চ্যাট, নতুন করে শুরু নয়",
+      worksWith:"যাদের সাথে কাজ করে",
+      featEyebrow:"ফিচার", featTitle:"প্রতিদিনের সত্যিকারের কাজের জন্য",
+      featLead:"পড়াশোনা, ব্যবসা আর এর মাঝখানের সবকিছুর জন্য দ্রুত ও পরিষ্কার চ্যাট অ্যাপ।",
+      bAiT:"চারটা AI। একটাই কথোপকথন।", bAiP:"এক ট্যাপে Gemini, Claude, GPT ও DeepSeek বদলান। চ্যাট আপনার সাথেই থাকে, তাই পরের AI ঠিক সেখান থেকেই শুরু করে যেখানে আগেরটা থেমেছিল।",
+      bAiSame:"প্রতিবার বদলানোর পরও একই কথোপকথন",
+      bVoT:"শুধু বলুন।", bVoP:"অর্বে ট্যাপ করুন, বলুন আর শুনুন। বন্ধ করতে এর বাইরে ট্যাপ করুন।",
+      bToT:"২০+ AI টুল", bToP:"আপনার সাথে ভাবে এমন নম্বর দেওয়া টুলের হাব।",
+      bSkT:"নিজে শেখানো স্কিল", bSkP:"নিজের কাজের নিয়ম যোগ করুন, অথবা একসাথে পুরো ZIP ইমপোর্ট করুন।",
+      bMeT:"যে মেমোরি থেকে যায়", bMeP:"টাইমলাইন, ক্যাপসুল আর চ্যাটের মধ্যে ব্রিজ।",
+      bMe1:"<small>আজ</small>মূল কথা সেভ হয়েছে", bMe2:"<small>গতকাল</small>ক্যাপসুল তৈরি হয়েছে", bMe3:"<small>গত সপ্তাহ</small>নতুন চ্যাটে ব্রিজ হয়েছে",
+      bCoT:"কোড ও পেজ, লাইভ", bCoP:"কোড বা ওয়েব পেজ চান, প্রিভিউ দেখুন, তারপর কপি বা ডাউনলোড করুন।",
+      bMoT:"আরও যা যা আছে", bMoP:"ছোট ছোট জিনিস যা অ্যাপটাকে পূর্ণ করে।",
+      more:["ওয়েব সার্চ","ছবি ও ফাইল","উত্তরের মোড","বাংলা ও ইংরেজি","লাইট ও ডার্ক","প্রোফাইল ও কভার ফটো","অ্যাপের ভেতরেই আপডেট"],
+      toolsEyebrow:"AI টুলস", toolsTitle:"চ্যাটের চেয়েও বেশি কিছু",
+      toolsLead:"অ্যাপে AI ফিচার খুলে যেকোনো টুল বেছে নিন। টুলগুলো নম্বর দিয়ে গ্রুপ করা, তাই কোথা থেকে শুরু করবেন সহজেই বোঝা যায়।",
+      instEyebrow:"ইনস্টল", instTitle:"এক মিনিটেরও কমে তৈরি",
+      instLead:"Zohirola APK ফাইল থেকে ইনস্টল হয়, প্লে স্টোরের বাইরে শেয়ার করা অনেক অ্যাপের মতোই।",
+      st1h:"APK ডাউনলোড করুন", st1p:"এই পেজের ডাউনলোড বাটনে ট্যাপ করুন। ব্রাউজার ফাইলটা রাখতে চাইলে Keep বা Download anyway বেছে নিন।",
+      st2h:"ইনস্টলের অনুমতি দিন", st2p:"ডাউনলোড হওয়া ফাইলটা খুলুন। Android চাইলে আপনার ব্রাউজারকে এই সোর্স থেকে অ্যাপ ইনস্টলের অনুমতি দিন, তারপর Install চাপুন।",
+      st3h:"খুলুন ও সাইন ইন করুন", st3p:"Zohirola খুলে Google বা ইমেইল দিয়ে সাইন ইন করুন, তারপর চ্যাট শুরু। পরের আপডেটগুলো অ্যাপের ভেতরেই আসবে।",
+      instTip:"<b>Play Protect সতর্কতা?</b> “unsafe app blocked” দেখালে <b>More details → Install anyway</b> চাপুন। অ্যাপটি প্লে স্টোরের নয় বলেই এটা আসে।",
+      faqEyebrow:"প্রশ্নোত্তর", faqTitle:"যে প্রশ্নগুলো সবাই করেন",
+      finalTitle:"আজই Zohirola-র সাথে চ্যাট শুরু করুন", finalSub:"এক অ্যাপে চারটা সেরা AI, আপনার ভাষায়। ইনস্টল করতে এক মিনিটও লাগে না।",
+      madeBy:"তৈরি করেছেন <b>জহিরুল ইসলাম জহির</b>",
+      verPrefix:"ভার্সন", needAndroid:"Android",
+      demo:[
+        {u:"আমার দোকানের উইকেন্ড অফারের জন্য একটা ছোট ক্যাপশন লিখে দাও"},
+        {b:"অবশ্যই! “উইকেন্ড স্পেশাল: সব কিছুতে ২০% ছাড়। চলে আসুন, নিজেকে একটু আদর করুন।” ✨"},
+        {s:"Claude-এ বদলেছে। একই চ্যাট চলছে।"},
+        {u:"আরেকটু ছোট করো"},
+        {b:"“পুরো উইকেন্ড ২০% ছাড়। নিজেকে আদর করুন।” ✨"}
+      ]
+    }
+  };
+
+  var TOOL_GROUPS = [
+    {en:"Make it yours", bn:"নিজের মতো সাজান", items:[
+      {en:["Skills","Teach the AI your own ways of working"], bn:["স্কিল","AI-কে নিজের কাজের নিয়ম শেখান"]},
+      {en:["Live Answer Customizer","Length, tone and depth sliders"], bn:["লাইভ আনসার কাস্টমাইজার","দৈর্ঘ্য, টোন ও গভীরতা স্লাইডার"]},
+      {en:["Personal Command Center","One-tap commands and shortcuts"], bn:["পারসোনাল কমান্ড সেন্টার","এক ট্যাপে কমান্ড ও শর্টকাট"]}
+    ]},
+    {en:"Think & explore", bn:"ভাবুন ও অন্বেষণ করুন", items:[
+      {en:["What If Machine","See where a “what if” could lead"], bn:["হোয়াট-ইফ মেশিন","“যদি এমন হয়” কোথায় নিয়ে যেতে পারে দেখুন"]},
+      {en:["Thought Map","Turn an idea or problem into a mind map"], bn:["থট ম্যাপ","আইডিয়া বা সমস্যাকে মাইন্ড ম্যাপে সাজান"]},
+      {en:["Decision Simulator","Best, likely and worst case before you decide"], bn:["ডিসিশন সিমুলেটর","সিদ্ধান্তের আগে সেরা, সম্ভাব্য ও খারাপ পরিণতি"]},
+      {en:["AI Knowledge Graph","A concept map of your chat"], bn:["এআই নলেজ গ্রাফ","আপনার চ্যাটের কনসেপ্ট ম্যাপ"]},
+      {en:["Adaptive App","Describe a tool and get a small working app"], bn:["অ্যাডাপ্টিভ অ্যাপ","টুলের বর্ণনা দিন, ছোট কাজের অ্যাপ পান"]}
+    ]},
+    {en:"Memory & context", bn:"মেমোরি ও কনটেক্সট", items:[
+      {en:["Personal AI Workspace","Your saved answers and notes"], bn:["পারসোনাল এআই ওয়ার্কস্পেস","সেভ করা উত্তর ও নোট"]},
+      {en:["AI Memory Timeline","What the AI remembered, by date"], bn:["এআই মেমোরি টাইমলাইন","AI কী মনে রেখেছে, তারিখ অনুযায়ী"]},
+      {en:["Remember this chat","Save the key point of a conversation"], bn:["এই চ্যাট মনে রাখুন","কথোপকথনের মূল কথা সেভ করুন"]},
+      {en:["Context Bridge","Bring knowledge from another chat"], bn:["কনটেক্সট ব্রিজ","অন্য চ্যাটের জ্ঞান এই চ্যাটে আনুন"]},
+      {en:["AI Context Capsule","Save a chat as a reusable summary"], bn:["এআই কনটেক্সট ক্যাপসুল","চ্যাটকে ক্যাপসুল সারাংশ হিসেবে সেভ করুন"]},
+      {en:["Conversation Replay","Watch a chat step by step"], bn:["কনভার্সেশন রিপ্লে","চ্যাটটি ধাপে ধাপে দেখুন"]}
+    ]},
+    {en:"Under every answer", bn:"প্রতিটি উত্তরের নিচে", items:[
+      {en:["Confidence Map","See how sure each part of the answer is"], bn:["কনফিডেন্স ম্যাপ","উত্তরের কোন অংশ কতটা নিশ্চিত দেখুন"]},
+      {en:["Mistake Detector","Catch errors before you rely on them"], bn:["মিসটেক ডিটেক্টর","ভরসা করার আগে ভুল ধরুন"]},
+      {en:["Multi-Persona","The same question from different viewpoints"], bn:["মাল্টি-পার্সোনা","একই প্রশ্ন ভিন্ন দৃষ্টিকোণ থেকে"]},
+      {en:["One-Tap Transformation","Reshape an answer in one tap"], bn:["ওয়ান-ট্যাপ ট্রান্সফরমেশন","এক ট্যাপে উত্তরের রূপ বদলান"]},
+      {en:["Chat Branching","Explore another direction without losing the first"], bn:["চ্যাট ব্রাঞ্চিং","প্রথমটা না হারিয়ে অন্য দিক দেখুন"]}
+    ]}
+  ];
+
+  var FAQ = [
+    {en:["Is Zohirola free?","You can start for free. The app also has optional paid plans (Pro and Max) if you want more."],
+     bn:["Zohirola কি ফ্রি?","ফ্রি-তে শুরু করা যায়। আরও বেশি চাইলে অ্যাপে ঐচ্ছিক পেইড প্ল্যান (Pro ও Max) আছে।"]},
+    {en:["Which phones does it work on?","Android 5.0 and newer. It is an Android app for now."],
+     bn:["কোন ফোনে চলে?","Android ৫.০ ও তার পরের সব ফোনে। আপাতত এটি শুধু Android অ্যাপ।"]},
+    {en:["Do I need internet?","Yes. The AIs answer over the internet, so you need a connection to chat."],
+     bn:["ইন্টারনেট লাগবে?","হ্যাঁ। AI ইন্টারনেটের মাধ্যমে উত্তর দেয়, তাই চ্যাটের জন্য কানেকশন দরকার।"]},
+    {en:["What happens to my chat when I switch from Claude to GPT?","Nothing is lost. The chat lives in the app, so the next AI reads the same conversation and carries on."],
+     bn:["Claude থেকে GPT-তে বদলালে চ্যাটের কী হয়?","কিছুই হারায় না। চ্যাট অ্যাপেই থাকে, তাই পরের AI একই কথোপকথন পড়ে এবং সেখান থেকেই চালিয়ে যায়।"]},
+    {en:["How do I update the app?","The app tells you when a new version is ready and installs it from inside the app. You do not need to come back to this page."],
+     bn:["অ্যাপ আপডেট করব কীভাবে?","নতুন ভার্সন তৈরি হলে অ্যাপ নিজেই জানায় এবং অ্যাপের ভেতর থেকেই ইনস্টল করে। এই পেজে আর ফিরে আসতে হবে না।"]},
+    {en:["Why does Android show a warning?","Android warns about any app that does not come from the Play Store. Tap More details, then Install anyway."],
+     bn:["Android কেন সতর্কতা দেখায়?","প্লে স্টোরের বাইরের যেকোনো অ্যাপের জন্যই Android সতর্ক করে। More details চাপুন, তারপর Install anyway।"]}
+  ];
+
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} return null; }
+
+  var lang = store("zl_lang");
+  if (lang !== "en" && lang !== "bn") lang = "bn";
+  var activeTab = 0;
+
+  function applyLang() {
+    var d = I18N[lang];
+    document.documentElement.lang = lang;
+    $$("[data-i]").forEach(function (el) { var v = d[el.getAttribute("data-i")]; if (v != null) el.innerHTML = v; });
+    $("#langBtn").textContent = lang === "bn" ? "EN" : "বাং";
+    document.title = lang === "bn" ? "Zohirola – Android অ্যাপ ডাউনলোড" : "Zohirola – Download the Android app";
+
+    $("#moreChips").innerHTML = d.more.map(function (m) { return "<span>" + m + "</span>"; }).join("");
+    var first = TOOL_GROUPS[1].items;
+    $("#miniTools").innerHTML = [first[0], first[1], first[2], first[4]].map(function (t, i) {
+      return "<div><em>" + (i + 1) + "</em>" + t[lang][0] + "</div>";
+    }).join("");
+
+    $("#toolTabs").innerHTML = TOOL_GROUPS.map(function (g, i) {
+      return '<button class="tab' + (i === activeTab ? " on" : "") + '" type="button" data-tab="' + i + '">' + g[lang] + "</button>";
+    }).join("");
+    renderTools();
+
+    $("#faqList").innerHTML = FAQ.map(function (q) {
+      return "<details><summary>" + q[lang][0] + "</summary><p>" + q[lang][1] + "</p></details>";
+    }).join("");
+
+    renderVersion();
+    observeReveal();
+    startDemo();
+  }
+
+  function renderTools() {
+    var g = TOOL_GROUPS[activeTab], n = 0;
+    $("#toolList").innerHTML = g.items.map(function (t) {
+      n++; var x = t[lang];
+      return '<div class="tool"><div class="n">' + n + "</div><div><b>" + x[0] + "</b><span>" + x[1] + "</span></div></div>";
+    }).join("");
+  }
+
+  /* ---------- download source ---------- */
+  var DL = { url: CONFIG.apkUrl, version: "", size: 0 };
+
+  function setLinks() {
+    $$(".dl-link").forEach(function (a) { a.setAttribute("href", DL.url); a.setAttribute("download", ""); a.setAttribute("rel", "noopener"); });
+  }
+  function fmtSize(b) { return b > 0 ? (b / 1048576).toFixed(b > 10485760 ? 0 : 1) + " MB" : ""; }
+  function renderVersion() {
+    var d = I18N[lang], parts = [];
+    if (DL.version) parts.push(d.verPrefix + " " + DL.version);
+    if (DL.size) parts.push(fmtSize(DL.size));
+    parts.push(d.needAndroid + " " + CONFIG.minAndroid + "+");
+    $("#verLine").textContent = parts.join("  •  ");
+  }
+  function fetchJson(url) {
+    return fetch(url, { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  function resolveSource() {
+    setLinks(); renderVersion();
+    var p = Promise.resolve(false);
+    if (CONFIG.firebaseDbUrl) {
+      p = fetchJson(CONFIG.firebaseDbUrl.replace(/\/+$/, "") + "/app_update.json").then(function (j) {
+        if (j && j.apkUrl && /^https?:\/\//.test(j.apkUrl) && j.enabled !== false) {
+          DL.url = j.apkUrl; DL.version = j.versionName ? String(j.versionName) : ""; return true;
+        }
+        return false;
+      }).catch(function () { return false; });
+    }
+    p.then(function (ok) {
+      if (ok || !CONFIG.githubRepo) return ok;
+      return fetchJson("https://api.github.com/repos/" + CONFIG.githubRepo + "/releases/latest").then(function (j) {
+        var a = (j.assets || []).filter(function (x) { return /\.apk$/i.test(x.name); })[0];
+        if (!a) return false;
+        DL.url = a.browser_download_url; DL.size = a.size || 0; DL.version = (j.tag_name || "").replace(/^v/i, "");
+        return true;
+      }).catch(function () { return false; });
+    }).then(function () {
+      setLinks(); renderVersion();
+      if (!DL.size && !/^https?:\/\//.test(DL.url)) {
+        fetch(DL.url, { method: "HEAD" }).then(function (r) {
+          var n = parseInt(r.headers.get("content-length") || "0", 10);
+          if (r.ok && n > 0) { DL.size = n; renderVersion(); }
+          else if (!r.ok && window.console) console.warn("APK not found at " + DL.url + ". Upload it next to index.html or set githubRepo.");
+        }).catch(function () {});
+      }
+    });
+  }
+
+  /* ---------- phone chat demo ---------- */
+  var demoToken = 0;
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function setSvc(i) { $$("#svc span").forEach(function (s, k) { s.classList.toggle("on", k === i); }); }
+  function startDemo() {
+    var token = ++demoToken, box = $("#msgs");
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function alive() { return token === demoToken; }
+    function add(cls, html) {
+      var m = document.createElement("div"); m.className = "msg " + cls; m.innerHTML = html; box.appendChild(m);
+      while (box.children.length > 6) box.removeChild(box.firstChild);
+      return m;
+    }
+    (async function run() {
+      var script = I18N[lang].demo;
+      while (alive()) {
+        box.innerHTML = ""; setSvc(0);
+        for (var i = 0; i < script.length && alive(); i++) {
+          var s = script[i];
+          if (s.u) { await sleep(reduce ? 0 : 900); if (!alive()) return; add("u", s.u); }
+          else if (s.b) {
+            var typing = add("b", '<span class="dots"><b></b><b></b><b></b></span>');
+            await sleep(reduce ? 0 : 1300); if (!alive()) return;
+            typing.innerHTML = s.b;
+          } else if (s.s) { await sleep(reduce ? 0 : 900); if (!alive()) return; setSvc(1); add("sw", s.s); }
+          await sleep(reduce ? 400 : 700);
+        }
+        await sleep(reduce ? 4000 : 3200);
+      }
+    })();
+  }
+
+  /* big switcher in the bento card cycles on its own */
+  function cycleSwitcher() {
+    var i = 0, els = $$("#swBig span");
+    setInterval(function () {
+      if (document.hidden) return;
+      i = (i + 1) % els.length;
+      els.forEach(function (e, k) { e.classList.toggle("on", k === i); });
+    }, 1900);
+  }
+
+  /* ---------- reveal + sticky bar ---------- */
+  var io;
+  function observeReveal() {
+    if (!("IntersectionObserver" in window)) { $$(".reveal").forEach(function (e) { e.classList.add("in"); }); return; }
+    if (!io) io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: .1 });
+    $$(".reveal:not(.in)").forEach(function (e) { io.observe(e); });
+  }
+  function stickyBar() {
+    var bar = $("#barM"), anchor = $("#mainDl");
+    if (!("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (es) {
+      var r = es[0];
+      bar.classList.toggle("show", !r.isIntersecting && r.boundingClientRect.top < 0);
+    }).observe(anchor);
+  }
+
+  /* ---------- events ---------- */
+  $("#langBtn").addEventListener("click", function () { lang = lang === "bn" ? "en" : "bn"; store("zl_lang", lang); applyLang(); });
+  $("#themeBtn").addEventListener("click", function () {
+    var root = document.documentElement, cur = root.getAttribute("data-theme");
+    if (!cur) cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next); store("zl_theme", next);
+  });
+  $("#toolTabs").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-tab]"); if (!b) return;
+    activeTab = +b.getAttribute("data-tab");
+    $$(".tab").forEach(function (t, i) { t.classList.toggle("on", i === activeTab); });
+    renderTools();
+  });
+  $("#copyLink").addEventListener("click", function () {
+    var btn = this, url = location.href.split("#")[0];
+    function done() { btn.textContent = I18N[lang].copied; setTimeout(function () { btn.textContent = I18N[lang].copyLink; }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done); else done();
+  });
+
+  /* ---------- init ---------- */
+  var savedTheme = store("zl_theme");
+  if (savedTheme === "dark" || savedTheme === "light") document.documentElement.setAttribute("data-theme", savedTheme);
+  $$(".appname").forEach(function (e) { e.textContent = CONFIG.appName; });
+  $("#yr").textContent = new Date().getFullYear();
+  if (!/Android/i.test(navigator.userAgent)) $("#desktopNote").classList.add("show");
+  applyLang();
+  resolveSource();
+  cycleSwitcher();
+  stickyBar();
+})();
+</script>
+</body>
+</html>
